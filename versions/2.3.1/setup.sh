@@ -26,6 +26,7 @@ Type=Application
 Categories=Graphics;3DGraphics;
 Terminal=false
 StartupNotify=true
+StartupWMClass=CHITUBOX Basic
 EOF
 
 chmod +x "$DESKTOP_FILE"
