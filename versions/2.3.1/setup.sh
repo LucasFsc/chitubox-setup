@@ -1,20 +1,21 @@
 #!/bin/bash
 
-# Get the folder where the script is located
+# Resolve the directory this script is in
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Define application variables
+# Define application variables (no versioning)
 APP_NAME="CHITUBOX Basic"
-EXEC_PATH="/opt/CBD/CHITUBOX_Basic/bin/CHITUBOX_Basic"
-LIB_PATH="/opt/CBD/CHITUBOX_Basic/lib"
-ICON_SOURCE="$SCRIPT_DIR/../freeIcon.png"
-ICON_DEST="/opt/CBD/CHITUBOX_Basic/chitubox.png"
+INSTALL_DIR="/opt/CBD/CHITUBOX_Basic"
+EXEC_PATH="$INSTALL_DIR/bin/CHITUBOX_Basic"
+LIB_PATH="$INSTALL_DIR/lib"
+ICON_SOURCE="$SCRIPT_DIR/../assets/freeIcon.png"
+ICON_DEST="$INSTALL_DIR/chitubox.png"
 DESKTOP_FILE="$HOME/.local/share/applications/chitubox.desktop"
 
-# Copy the icon to CHITUBOX install dir
+echo "📁 Copying icon from: $ICON_SOURCE"
 sudo cp "$ICON_SOURCE" "$ICON_DEST"
 
-# Create the .desktop launcher
+echo "🛠️ Creating launcher at: $DESKTOP_FILE"
 cat > "$DESKTOP_FILE" <<EOF
 [Desktop Entry]
 Version=1.0
@@ -29,4 +30,4 @@ EOF
 
 chmod +x "$DESKTOP_FILE"
 
-echo "✅ Launcher created at $DESKTOP_FILE"
+echo "✅ Launcher created successfully!"
